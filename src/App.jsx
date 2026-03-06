@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import MovieCard from './components/MovieCard'
+import './App.css'
 
 function App() {
   const apiKey = import.meta.env.VITE_TMDB_API_KEY
@@ -14,9 +15,9 @@ function App() {
   }, [])
 
   return (
-    <div>
-      <h1>Movie Tracker</h1>
-      <div className="movie-grid">
+    <div className="app">
+      <h1 className="heading">Movie Tracker</h1>
+      <div className="grid">
         {movies.map(movie => (
           <MovieCard
             key={movie.id}
