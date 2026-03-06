@@ -5,19 +5,19 @@
   --bg-primary: #1b1d1e;
   --bg-surface: #252729;
   --border-subtle: #3d4555;
-  --text-muted: #888888;
+  --text-muted: #aaaaaa;
   --text-primary: #f0f0f0;
   --border-bold: #ffffff;
 
   /* ── Accents ── */
   --accent-lavender: #c084fc;
-  --accent-pink: #ff2d9b;
+  --accent-pink: #ff3daa;
   --accent-lime: #c8f500;
 
   /* ── Semantic roles (we'll assign these once we see them in context) ── */
   --accent-shadow: #c084fc;
   --accent-highlight: #c8f500;
-  --accent-interactive: #ff2d9b;
+  --accent-interactive: #ff3daa;
 
   /* ── Typography ── */
   --font-display: "Unbounded", sans-serif;
