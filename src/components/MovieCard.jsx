@@ -1,9 +1,18 @@
-import styles from './MovieCard.module.css'
+import styles from "./MovieCard.module.css";
 
-function MovieCard({ title, posterPath, releaseDate, voteAverage }) {
-  const posterUrl = `https://image.tmdb.org/t/p/w500${posterPath}`
-  const year = releaseDate.slice(0, 4)
-  const rating = voteAverage.toFixed(1)
+function MovieCard({
+  title,
+  posterPath,
+  releaseDate,
+  voteAverage,
+  isInWatchlist,
+  onAddToWatchlist,
+  onRemoveFromWatchlist,
+}) {
+  const posterUrl = `https://image.tmdb.org/t/p/w500${posterPath}`;
+  //    defensive coding. some movies have no release date. ? : if/else
+  const year = releaseDate ? releaseDate.slice(0, 4) : "N/A";
+  const rating = voteAverage ? voteAverage.toFixed(1) : "N/A";
 
   return (
     <div className={styles.card}>
@@ -12,11 +21,17 @@ function MovieCard({ title, posterPath, releaseDate, voteAverage }) {
         <h3 className={styles.title}>{title}</h3>
         <div className={styles.meta}>
           <span>{year}</span>
-          <span className={styles.rating}>⭐ {rating}</span>
+          <span className={styles.rating}>★ {rating}</span>
         </div>
+        <button
+          className={`${styles.watchlistBtn} ${isInWatchlist ? styles.added : ""}`}
+          onClick={isInWatchlist ? onRemoveFromWatchlist : onAddToWatchlist}
+        >
+          {isInWatchlist ? "✓ ADDED" : "+ WATCHLIST"}
+        </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default MovieCard
+export default MovieCard;

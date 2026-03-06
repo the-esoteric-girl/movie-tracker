@@ -8,6 +8,24 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
 
+  // watchlist state, loaded from localStorage on first render
+  const [watchlist, setWatchlist] = useState(() => {
+    const saved = localStorage.getItem("watchlist");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  const addToWatchlist = (movie) => {
+    const updated = [...watchlist, movie];
+    setWatchlist(updated);
+    localStorage.setItem("watchlist", JSON.stringify(updated));
+  };
+
+  const removeFromWatchlist = (movieId) => {
+    const updated = watchlist.filter((m) => m.id !== movieId);
+    setWatchlist(updated);
+    localStorage.setItem("watchlist", JSON.stringify(updated));
+  };
+
   useEffect(() => {
     const debounceTimer = setTimeout(() => {
       if (query.trim() === "") {
@@ -38,6 +56,12 @@ function App() {
             posterPath={movie.poster_path}
             releaseDate={movie.release_date}
             voteAverage={movie.vote_average}
+            // checks if any item in the array matches the condition, returns true or false.
+            isInWatchlist={watchlist.some((m) => m.id === movie.id)}
+            // passes the add function down as a prop
+            onAddToWatchlist={() => addToWatchlist(movie)}
+            // passes the remove function down
+            onRemoveFromWatchlist={() => removeFromWatchlist(movie.id)}
           />
         ))}
       </div>
