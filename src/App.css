@@ -2,6 +2,8 @@
   max-width: 1280px;
   margin: var(--space-0) auto;
   padding: var(--space-10) var(--space-6);
+  /* Clear the fixed bottom nav */
+  padding-bottom: calc(var(--space-10) + 72px);
 }
 
 .heading {
@@ -11,9 +13,15 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--text-primary);
-  border-bottom: var(--border-width-heavy) solid var(--accent-primary);
+  border-bottom: var(--border-width-heavy) solid var(--accent-lavender);
   padding-bottom: var(--space-4);
   margin-bottom: var(--space-10);
+}
+
+.empty-state {
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
 }
 
 /* Mobile first — 2 columns */
