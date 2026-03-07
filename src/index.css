@@ -2,8 +2,10 @@
 
 :root {
   /* ── Colors ── */
-  --bg-primary: #1b1d1e;
-  --bg-surface: #252729;
+  /*  dark blue black: #13121f  
+  slate : #1b1d1e */
+  --bg-primary: #13121f;
+  --bg-surface: #1e1d2e;
   --border-subtle: #3d4555;
   --text-muted: #aaaaaa;
   --text-primary: #f0f0f0;

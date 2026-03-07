@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reverie — Sitemap v2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Space+Grotesk:wght@400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-primary: #13121f;
+    --bg-surface: #1e1d2e;
+    --bg-surface-2: #252729;
+    --border-subtle: #3d4555;
+    --border-bold: #ffffff;
+    --text-muted: #aaaaaa;
+    --text-primary: #f0f0f0;
+    --accent-lavender: #c084fc;
+    --accent-pink: #ff3daa;
+    --accent-lime: #c8f500;
+    --font-display: 'Unbounded', sans-serif;
+    --font-body: 'Space Grotesk', sans-serif;
+  }
+
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    padding: 56px 48px;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    max-width: 960px;
+    margin: 0 auto 56px;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 32px;
+  }
+
+  .header-eyebrow {
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent-pink);
+    margin-bottom: 12px;
+  }
+
+  .header-title {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+  }
+
+  .header-title span {
+    color: var(--accent-lavender);
+  }
+
+  .header-meta {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .meta-item strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  /* ── LEGEND ── */
+  .legend {
+    max-width: 960px;
+    margin: 0 auto 48px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .legend-label {
+    font-size: 10px;
+    font-family: var(--font-display);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-right: 4px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .legend-chip {
+    height: 14px;
+    width: 28px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  /* ── MAP WRAPPER ── */
+  .map {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── NODES ── */
+  .node {
+    padding: 9px 14px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+    width: 100%;
+  }
+
+  .node-root {
+    background: var(--accent-lavender);
+    color: var(--bg-primary);
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 14px 48px;
+    width: auto;
+    border-radius: 3px;
+  }
+
+  .node-nav {
+    background: var(--accent-lavender);
+    color: var(--bg-primary);
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .node-screen {
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    border: 1.5px solid var(--border-subtle);
+  }
+
+  .node-modal {
+    background: var(--bg-primary);
+    color: var(--accent-lime);
+    border: 1.5px dashed var(--accent-lime);
+    font-size: 10px;
+  }
+
+  .node-empty {
+    background: var(--bg-primary);
+    color: var(--text-muted);
+    border: 1.5px solid var(--border-subtle);
+    font-size: 10px;
+    opacity: 0.7;
+  }
+
+  .node-special {
+    background: var(--bg-primary);
+    color: var(--accent-pink);
+    border: 2px solid var(--accent-pink);
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 12px;
+  }
+
+  .node-onboarding {
+    background: var(--bg-primary);
+    color: var(--accent-lavender);
+    border: 1.5px solid var(--accent-lavender);
+    font-size: 10px;
+  }
+
+  /* ── CONNECTORS ── */
+  .line-v {
+    width: 1.5px;
+    background: var(--border-subtle);
+  }
+
+  .line-v-short { height: 20px; }
+  .line-v-med   { height: 32px; }
+
+  .line-v-dashed {
+    width: 1.5px;
+    height: 20px;
+    background: repeating-linear-gradient(
+      to bottom,
+      var(--accent-lime) 0px, var(--accent-lime) 3px,
+      transparent 3px, transparent 7px
+    );
+  }
+
+  .line-v-lavender {
+    width: 1.5px;
+    height: 20px;
+    background: repeating-linear-gradient(
+      to bottom,
+      var(--accent-lavender) 0px, var(--accent-lavender) 3px,
+      transparent 3px, transparent 7px
+    );
+  }
+
+  .line-h {
+    height: 1.5px;
+    background: var(--border-subtle);
+    width: 83%;
+  }
+
+  /* ── NAV ROW ── */
+  .nav-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .nav-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-col-connector {
+    width: 1.5px;
+    height: 32px;
+    background: var(--border-subtle);
+  }
+
+  .children {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* ── MOVIE DETAIL SECTION ── */
+  .detail-wrap {
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  .detail-section {
+    border: 1.5px solid var(--accent-pink);
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+    width: 100%;
+  }
+
+  .detail-tag {
+    position: absolute;
+    top: -9px;
+    left: 14px;
+    background: var(--bg-primary);
+    padding: 0 8px;
+    font-size: 9px;
+    font-family: var(--font-display);
+    color: var(--accent-pink);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .detail-note {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 16px;
+    font-style: normal;
+    letter-spacing: 0.02em;
+  }
+
+  .detail-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* ── ONBOARDING ROW ── */
+  .onboarding-wrap {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .onboarding-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    width: 100%;
+    border: 1px solid var(--accent-lavender);
+    border-radius: 4px;
+    padding: 16px;
+    position: relative;
+  }
+
+  .onboarding-tag {
+    position: absolute;
+    top: -9px;
+    left: 14px;
+    background: var(--bg-primary);
+    padding: 0 8px;
+    font-size: 9px;
+    font-family: var(--font-display);
+    color: var(--accent-lavender);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* ── ANNOTATIONS ── */
+  .annotations {
+    max-width: 960px;
+    margin: 48px auto 0;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .annotation-block h3 {
+    font-family: var(--font-display);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-lavender);
+    margin-bottom: 10px;
+  }
+
+  .annotation-block p, .annotation-block li {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .annotation-block ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .annotation-block ul li::before {
+    content: '—';
+    margin-right: 6px;
+    color: var(--border-subtle);
+  }
+
+  .pill {
+    display: inline-block;
+    font-size: 9px;
+    font-family: var(--font-display);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-right: 4px;
+  }
+
+  .pill-pink   { background: var(--accent-pink);    color: var(--bg-primary); }
+  .pill-lime   { background: var(--accent-lime);    color: var(--bg-primary); }
+  .pill-lav    { background: var(--accent-lavender); color: var(--bg-primary); }
+
+  /* ── SEARCH CALLOUT ── */
+  .search-callout {
+    max-width: 960px;
+    margin: 0 auto 40px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .search-callout-icon {
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .search-callout p {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .search-callout strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <p class="header-eyebrow">UX Deliverable · Information Architecture</p>
+  <h1 class="header-title"><span>Reverie</span> — Sitemap</h1>
+  <div class="header-meta">
+    <div class="meta-item"><strong>Version</strong> &nbsp;V1</div>
+    <div class="meta-item"><strong>Platform</strong> &nbsp;Mobile (React)</div>
+    <div class="meta-item"><strong>Last updated</strong> &nbsp;2025</div>
+    <div class="meta-item"><strong>Scope</strong> &nbsp;Screens + navigation flow only</div>
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <span class="legend-label">Key</span>
+  <div class="legend-item">
+    <div class="legend-chip" style="background:var(--accent-lavender)"></div>
+    Nav tab / Root
+  </div>
+  <div class="legend-item">
+    <div class="legend-chip" style="background:var(--bg-surface); border:1.5px solid var(--border-subtle)"></div>
+    Screen
+  </div>
+  <div class="legend-item">
+    <div class="legend-chip" style="background:var(--bg-primary); border:1.5px dashed var(--accent-lime)"></div>
+    Modal / overlay
+  </div>
+  <div class="legend-item">
+    <div class="legend-chip" style="background:var(--bg-primary); border:1.5px solid var(--border-subtle); opacity:0.6"></div>
+    Empty state
+  </div>
+  <div class="legend-item">
+    <div class="legend-chip" style="background:var(--bg-primary); border:1.5px solid var(--accent-lavender)"></div>
+    Onboarding flow
+  </div>
+  <div class="legend-item">
+    <div class="legend-chip" style="background:var(--bg-primary); border:2px solid var(--accent-pink)"></div>
+    Global screen
+  </div>
+</div>
+
+<!-- SEARCH CALLOUT -->
+<div class="search-callout">
+  <div class="search-callout-icon">⌕</div>
+  <p>
+    <strong>Search is a behaviour, not a screen.</strong>
+    It appears in three tabs — Find (searches TMDB database), Saved and Seen (filters local list) — but does not exist as a standalone destination. Results appear inline within each tab. Empty search states are noted per tab below.
+  </p>
+</div>
+
+<!-- MAP -->
+<div class="map">
+
+  <!-- ONBOARDING -->
+  <div class="onboarding-wrap">
+    <div class="onboarding-row">
+      <div class="onboarding-tag">Onboarding — first launch only</div>
+      <div class="node node-onboarding">Splash / loading</div>
+      <div class="node node-onboarding">Welcome screen</div>
+      <div class="node node-onboarding">Empty app → Find tab</div>
+    </div>
+  </div>
+
+  <!-- ROOT -->
+  <div class="node node-root">REVERIE</div>
+  <div class="line-v line-v-med"></div>
+  <div class="line-h"></div>
+
+  <!-- NAV ROW -->
+  <div class="nav-row">
+
+    <!-- FIND -->
+    <div class="nav-col">
+      <div class="nav-col-connector"></div>
+      <div class="node node-nav">Find</div>
+      <div class="children">
+        <div class="line-v line-v-short"></div>
+        <div class="node node-screen">Browse (default)</div>
+        <div class="line-v line-v-short"></div>
+        <div class="node node-screen">Search results</div>
+        <div class="line-v line-v-short"></div>
+        <div class="node node-empty">Search empty state</div>
+        <div class="line-v-dashed"></div>
+        <div class="node node-modal">Filter sheet</div>
+        <div class="line-v line-v-short"></div>
+        <div class="node node-empty">Filter empty state</div>
+      </div>
+    </div>
+
+    <!-- SAVED -->
+    <div class="nav-col">
+      <div class="nav-col-connector"></div>
+      <div class="node node-nav">Saved</div>
+      <div class="children">
+        <div class="line-v line-v-short"></div>
+        <div class="node node-screen">Watchlist</div>
+        <div class="line-v line-v-short"></div>
+        <div class="node node-screen">Search results</div>
+        <div class="line-v line-v-short"></div>
+        <div class="node node-empty">Search empty state</div>
+        <div class="line-v line-v-short"></div>
+        <div class="node node-empty">Watchlist empty state</div>
+      </div>
+    </div>
+
+    <!-- SEEN -->
+    <div class="nav-col">
+      <div class="nav-col-connector"></div>
+      <div class="node node-nav">Seen</div>
+      <div class="children">
+        <div class="line-v line-v-short"></div>
+        <div class="node node-screen">Watch log</div>
+        <div class="line-v line-v-short"></div>
+        <div class="node node-screen">Search results</div>
+        <div class="line-v line-v-short"></div>
+        <div class="node node-empty">Search empty state</div>
+        <div class="line-v line-v-short"></div>
+        <div class="node node-screen">Review detail</div>
+        <div class="line-v line-v-short"></div>
+        <div class="node node-empty">Log empty state</div>
+      </div>
+    </div>
+
+    <!-- YOU -->
+    <div class="nav-col">
+      <div class="nav-col-connector"></div>
+      <div class="node node-nav">You</div>
+      <div class="children">
+        <div class="line-v line-v-short"></div>
+        <div class="node node-screen">Settings</div>
+        <div class="line-v-dashed"></div>
+        <div class="node node-modal">Clear data confirm</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MOVIE DETAIL -->
+  <div class="detail-wrap">
+    <div class="detail-section">
+      <div class="detail-tag">Movie Detail — global screen, reached from Find · Saved · Seen</div>
+      <p class="detail-note">One screen. Stateful action buttons (save / watch / rate / review) live here — not separate screens.</p>
+      <div class="detail-inner">
+        <div class="node node-special" style="width:100%; max-width:320px;">Movie Detail</div>
+        <div class="line-v-dashed"></div>
+        <div class="node node-modal" style="width:100%; max-width:320px;">Log Movie Modal</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ANNOTATIONS -->
+<div class="annotations">
+  <div class="annotation-block">
+    <h3>Design decisions</h3>
+    <ul>
+      <li>Search lives inside each tab as a behaviour, not a destination screen — avoids dead-end navigation and keeps users oriented</li>
+      <li>Movie Detail is a global screen reachable from three tabs — represented separately to avoid duplication in the map</li>
+      <li>Log Movie Modal is the only overlay child of Movie Detail — all other actions are stateful buttons on the same screen</li>
+      <li>Onboarding is a first-launch-only flow that exits directly into the Find tab</li>
+      <li>"You" tab is intentionally minimal in V1 — architected to expand into a full profile in V2</li>
+    </ul>
+  </div>
+  <div class="annotation-block">
+    <h3>V2 considerations</h3>
+    <ul>
+      <li><span class="pill pill-lav">Nav</span> "You" tab grows into full Profile — build the tab to support expanded content</li>
+      <li><span class="pill pill-pink">Auth</span> V2 adds login/signup screens — onboarding flow will branch here</li>
+      <li><span class="pill pill-lime">Social</span> Friend activity, watchlist overlap, and likes/comments add new screens under "You" and Movie Detail</li>
+      <li><span class="pill pill-pink">Data</span> Use TMDB movie IDs as canonical reference throughout — required for social layer</li>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>
