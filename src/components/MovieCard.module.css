@@ -1,3 +1,9 @@
+.cardLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
 .card {
   background-color: var(--bg-surface);
   border: var(--border-width) solid var(--border-bold);

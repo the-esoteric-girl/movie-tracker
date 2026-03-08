@@ -13,27 +13,11 @@ const MOODS = [
   { label: "Get My Pulse Up", genres: "28,12" },
 ];
 
-export default function FindPage() {
+export default function FindPage({ watchlist, onAdd, onRemove }) {
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
   const [activeMood, setActiveMood] = useState(null);
-  const [watchlist, setWatchlist] = useState(() => {
-    const saved = localStorage.getItem("watchlist");
-    return saved ? JSON.parse(saved) : [];
-  });
-
-  const addToWatchlist = (movie) => {
-    const updated = [...watchlist, movie];
-    setWatchlist(updated);
-    localStorage.setItem("watchlist", JSON.stringify(updated));
-  };
-
-  const removeFromWatchlist = (movieId) => {
-    const updated = watchlist.filter((m) => m.id !== movieId);
-    setWatchlist(updated);
-    localStorage.setItem("watchlist", JSON.stringify(updated));
-  };
 
   const handleMoodSelect = (mood) => {
     if (activeMood === mood.label) {
@@ -85,13 +69,14 @@ export default function FindPage() {
         {movies.map((movie) => (
           <MovieCard
             key={movie.id}
+            id={movie.id}
             title={movie.title}
             posterPath={movie.poster_path}
             releaseDate={movie.release_date}
             voteAverage={movie.vote_average}
             isInWatchlist={watchlist.some((m) => m.id === movie.id)}
-            onAddToWatchlist={() => addToWatchlist(movie)}
-            onRemoveFromWatchlist={() => removeFromWatchlist(movie.id)}
+            onAddToWatchlist={() => onAdd(movie)}
+            onRemoveFromWatchlist={() => onRemove(movie.id)}
           />
         ))}
       </div>
