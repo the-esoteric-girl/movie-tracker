@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styles from "./MovieDetailPage.module.css";
+import LogModal from "../components/LogModal";
 
 export default function MovieDetailPage({
   watchlist,
@@ -9,6 +10,7 @@ export default function MovieDetailPage({
   onRemove,
   onAddSeen,
   onRemoveSeen,
+  onUpdateSeen,
 }) {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -16,6 +18,7 @@ export default function MovieDetailPage({
 
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showLogModal, setShowLogModal] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -51,9 +54,9 @@ export default function MovieDetailPage({
     isInWatchlist ? onRemove(movie.id) : onAdd(movie);
   };
 
-  const toggleSeen = () => {
+  const openLogModal = () => {
     if (!movie) return;
-    isInSeen ? onRemoveSeen(movie.id) : onAddSeen(movie);
+    setShowLogModal(true);
   };
 
   if (loading) {
@@ -163,9 +166,9 @@ export default function MovieDetailPage({
               </button>
               <button
                 className={`${styles.btn} ${styles.btnWatched} ${isInSeen ? styles.btnWatchedActive : ""}`}
-                onClick={toggleSeen}
+                onClick={openLogModal}
               >
-                {isInSeen ? "✓ WATCHED" : "MARK WATCHED"}
+                {isInSeen ? "✓ LOGGED" : "LOG IT"}
               </button>
             </div>
           </div>
@@ -206,6 +209,22 @@ export default function MovieDetailPage({
           </section>
         )}
       </div>
+
+      {showLogModal && movie && (
+        <LogModal
+          movie={movie}
+          initialData={isInSeen ? (seenList.find((m) => m.id === movie.id) ?? null) : null}
+          onSave={(data) => {
+            if (isInSeen) {
+              onUpdateSeen(movie.id, data);
+            } else {
+              onAddSeen({ ...movie, ...data });
+            }
+            setShowLogModal(false);
+          }}
+          onClose={() => setShowLogModal(false)}
+        />
+      )}
     </div>
   );
 }
