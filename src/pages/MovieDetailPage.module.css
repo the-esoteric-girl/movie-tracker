@@ -179,11 +179,12 @@
   margin-top: var(--space-1);
 }
 
+/* Base — ghost (+ SAVE) */
 .btn {
   padding: var(--space-2) var(--space-5);
   background: transparent;
-  border: var(--border-width) solid var(--accent-pink);
-  color: var(--accent-pink);
+  border: var(--border-width) solid var(--border-bold);
+  color: var(--text-primary);
   font-family: var(--font-body);
   font-size: var(--text-sm);
   font-weight: var(--weight-bold);
@@ -199,51 +200,82 @@
 }
 
 .btn:hover {
-  background: var(--accent-pink);
-  color: var(--bg-primary);
   transform: translate(-2px, -2px);
   box-shadow: var(--shadow-md);
-}
-
-.btnSavedActive {
-  background: var(--accent-pink);
+  background: var(--text-primary);
   color: var(--bg-primary);
 }
 
-.btnSavedActive:hover {
+/* Ghost active — ✓ SAVED */
+.btnGhostActive {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.btnGhostActive:hover {
   background: transparent;
-  color: var(--accent-pink);
+  color: var(--text-primary);
 }
 
-.btnWatched {
-  border-color: var(--accent-lime);
-  color: var(--accent-lime);
-}
-
-.btnWatched:hover {
-  background: var(--accent-lime);
+/* Primary — LOG IT */
+.btnPrimary {
+  background: var(--accent-lavender);
+  border-color: var(--accent-lavender);
   color: var(--bg-primary);
 }
 
-.btnWatchedActive {
-  background: var(--accent-lime);
+.btnPrimary:hover {
+  background: var(--accent-lavender);
   color: var(--bg-primary);
-  border-color: var(--accent-lime);
 }
 
-.btnWatchedActive:hover {
+/* Primary active — ✓ LOGGED */
+.btnPrimaryActive {
   background: transparent;
-  color: var(--accent-lime);
+  border-color: var(--accent-lavender);
+  color: var(--accent-lavender);
+}
+
+.btnPrimaryActive:hover {
+  background: var(--accent-lavender);
+  color: var(--bg-primary);
 }
 
 /* ── User rating display ── */
 .userRating {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.userRatingStars {
+  display: flex;
+  gap: 1px;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.starFull {
+  color: var(--accent-lime);
+}
+
+.starHalf {
+  color: var(--accent-lime);
+  opacity: 0.45;
+}
+
+.starEmpty {
+  color: var(--text-muted);
+  opacity: 0.3;
+}
+
+.userRatingNum {
   font-family: var(--font-body);
   font-size: var(--text-sm);
   font-weight: var(--weight-bold);
   color: var(--accent-lime);
   letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
 /* ── Content sections ── */

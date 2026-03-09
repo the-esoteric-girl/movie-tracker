@@ -3,6 +3,15 @@ import { useParams, useNavigate } from "react-router-dom";
 import styles from "./MovieDetailPage.module.css";
 import LogModal from "../components/LogModal";
 
+function renderUserStars(rating) {
+  return Array.from({ length: 5 }, (_, i) => {
+    const val = i + 1;
+    if (rating >= val) return <span key={i} className={styles.starFull}>★</span>;
+    if (rating >= val - 0.5) return <span key={i} className={styles.starHalf}>★</span>;
+    return <span key={i} className={styles.starEmpty}>★</span>;
+  });
+}
+
 export default function MovieDetailPage({
   watchlist,
   seenList,
@@ -162,13 +171,13 @@ export default function MovieDetailPage({
 
             <div className={styles.actions}>
               <button
-                className={`${styles.btn} ${isInWatchlist ? styles.btnSavedActive : ""}`}
+                className={`${styles.btn} ${isInWatchlist ? styles.btnGhostActive : ""}`}
                 onClick={toggleWatchlist}
               >
                 {isInWatchlist ? "✓ SAVED" : "+ SAVE"}
               </button>
               <button
-                className={`${styles.btn} ${styles.btnWatched} ${isInSeen ? styles.btnWatchedActive : ""}`}
+                className={`${styles.btn} ${styles.btnPrimary} ${isInSeen ? styles.btnPrimaryActive : ""}`}
                 onClick={openLogModal}
               >
                 {isInSeen ? "✓ LOGGED" : "LOG IT"}
@@ -176,7 +185,10 @@ export default function MovieDetailPage({
             </div>
             {seenEntry?.rating > 0 && (
               <div className={styles.userRating}>
-                ★ Your rating: {seenEntry.rating.toFixed(1)} / 5
+                <span className={styles.userRatingStars}>
+                  {renderUserStars(seenEntry.rating)}
+                </span>
+                <span className={styles.userRatingNum}>{seenEntry.rating.toFixed(1)}</span>
               </div>
             )}
           </div>
