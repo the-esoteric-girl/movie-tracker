@@ -1,6 +1,6 @@
 import MovieCard from "../components/MovieCard";
 
-export default function SavedPage({ watchlist, onRemove }) {
+export default function SavedPage({ watchlist }) {
   return (
     <div className="app">
       <h1 className="heading">Saved</h1>
@@ -16,9 +16,6 @@ export default function SavedPage({ watchlist, onRemove }) {
               posterPath={movie.poster_path}
               releaseDate={movie.release_date}
               voteAverage={movie.vote_average}
-              isInWatchlist={true}
-              onAddToWatchlist={() => {}}
-              onRemoveFromWatchlist={() => onRemove(movie.id)}
             />
           ))}
         </div>

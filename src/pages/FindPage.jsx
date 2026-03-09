@@ -2,18 +2,9 @@ import { useState, useEffect } from "react";
 import MovieCard from "../components/MovieCard";
 import SearchBar from "../components/SearchBar";
 import MoodSelector from "../components/MoodSelector";
+import { MOODS } from "../constants/moods";
 
-const MOODS = [
-  { label: "Make Me Cry", genres: "18" },
-  { label: "Something Funny", genres: "35" },
-  { label: "Scare Me", genres: "27,53" },
-  { label: "Use My Brain", genres: "878,9648" },
-  { label: "Turn It Off", genres: "16,10751" },
-  { label: "Something Romantic", genres: "10749" },
-  { label: "Get My Pulse Up", genres: "28,12" },
-];
-
-export default function FindPage({ watchlist, onAdd, onRemove }) {
+export default function FindPage() {
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
@@ -74,9 +65,6 @@ export default function FindPage({ watchlist, onAdd, onRemove }) {
             posterPath={movie.poster_path}
             releaseDate={movie.release_date}
             voteAverage={movie.vote_average}
-            isInWatchlist={watchlist.some((m) => m.id === movie.id)}
-            onAddToWatchlist={() => onAdd(movie)}
-            onRemoveFromWatchlist={() => onRemove(movie.id)}
           />
         ))}
       </div>

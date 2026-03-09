@@ -59,17 +59,13 @@ export default function App() {
         <Route
           path="/"
           element={
-            <FindPage
-              watchlist={watchlist}
-              onAdd={addToWatchlist}
-              onRemove={removeFromWatchlist}
-            />
+            <FindPage />
           }
         />
         <Route
           path="/saved"
           element={
-            <SavedPage watchlist={watchlist} onRemove={removeFromWatchlist} />
+            <SavedPage watchlist={watchlist} />
           }
         />
         <Route

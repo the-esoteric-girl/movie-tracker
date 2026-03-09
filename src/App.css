@@ -24,33 +24,9 @@
   font-size: var(--text-base);
 }
 
-/* Mobile first — 2 columns */
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fill, 180px);
   gap: var(--space-4);
-}
-
-/* Tablet — 768px and wider */
-@media (min-width: 768px) {
-  .movie-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-6);
-  }
-}
-
-/* Desktop — 1024px and wider */
-@media (min-width: 1024px) {
-  .movie-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-6);
-  }
-}
-
-/* Wide — 1280px and wider */
-@media (min-width: 1280px) {
-  .movie-grid {
-    grid-template-columns: repeat(5, 1fr);
-    gap: var(--space-6);
-  }
+  justify-content: center;
 }
