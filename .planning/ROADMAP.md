@@ -28,11 +28,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. User can write an optional text review in the modal
   4. User can set or change the watched date (defaults to today)
   5. User can re-open the modal for an already-logged movie and update their rating or review
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: Extend seenList data model and build LogModal component
-- [ ] 01-02: Wire modal triggers from MovieDetailPage and ensure edit flow works
+- [ ] 01-01-PLAN.md — Build LogModal component and extend App.jsx state for enriched seen entries
+- [ ] 01-02-PLAN.md — Wire LogModal into MovieDetailPage with LOG IT / LOGGED button states and edit flow
 
 ### Phase 2: Seen Page
 **Goal**: Users can browse all their logged movies and jump into editing any log entry
