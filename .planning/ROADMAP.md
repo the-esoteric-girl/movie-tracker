@@ -12,7 +12,7 @@ Reverie's core value is the movie logging moment — rating, reviewing, remember
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Movie Logging** - Build the log modal and extend seenList to store rating, review, and date
+- [x] **Phase 1: Movie Logging** - Build the log modal and extend seenList to store rating, review, and date (completed 2026-03-09)
 - [ ] **Phase 2: Seen Page** - Build the full SeenPage with grid/list toggle and modal re-entry
 - [ ] **Phase 3: Profile, Stats, and Polish** - Build YouPage with stats, basic profile, and visual overhaul
 
@@ -71,6 +71,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Movie Logging | 1/2 | In Progress|  |
+| 1. Movie Logging | 2/2 | Complete   | 2026-03-09 |
 | 2. Seen Page | 0/2 | Not started | - |
 | 3. Profile, Stats, and Polish | 0/2 | Not started | - |

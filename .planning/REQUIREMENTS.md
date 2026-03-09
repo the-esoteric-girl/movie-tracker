@@ -7,7 +7,7 @@
 
 ### Movie Logging
 
-- [ ] **LOG-01**: User can mark a movie as seen from the detail page
+- [x] **LOG-01**: User can mark a movie as seen from the detail page
 - [x] **LOG-02**: User can rate a movie ½–5★ (half-star increments) when logging it
 - [x] **LOG-03**: User can write an optional text review when logging
 - [x] **LOG-04**: User can set the date watched (defaults to today)
@@ -60,7 +60,7 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| LOG-01 | Phase 1 | Pending |
+| LOG-01 | Phase 1 | Complete |
 | LOG-02 | Phase 1 | Complete |
 | LOG-03 | Phase 1 | Complete |
 | LOG-04 | Phase 1 | Complete |

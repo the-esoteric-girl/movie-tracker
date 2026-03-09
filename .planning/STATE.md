@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Completed 01-movie-logging plan 01-01
-last_updated: "2026-03-09T21:19:45.393Z"
-last_activity: 2026-03-09 — Roadmap created
+status: executing
+stopped_at: Completed 01-movie-logging plan 01-02
+last_updated: "2026-03-09T21:33:59.995Z"
+last_activity: 2026-03-09 — Completed 01-01 LogModal
 progress:
   total_phases: 3
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 2
-  completed_plans: 1
-  percent: 0
+  completed_plans: 2
+  percent: 50
 ---
 
 # Project State
@@ -26,27 +26,27 @@ See: .planning/PROJECT.md (updated 2026-03-09)
 ## Current Position
 
 Phase: 1 of 3 (Movie Logging)
-Plan: 1 of 2 in current phase
+Plan: 2 of 2 in current phase — Phase 1 Complete
 Status: In progress
-Last activity: 2026-03-09 — Completed 01-01 LogModal
+Last activity: 2026-03-09 — Completed 01-02 LogModal wired into MovieDetailPage
 
-Progress: [█████░░░░░] 50%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 2 min
-- Total execution time: 2 min
+- Total plans completed: 2
+- Average duration: 14 min
+- Total execution time: 27 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-movie-logging | 1 | 2 min | 2 min |
+| 01-movie-logging | 2 | 27 min | 14 min |
 
 **Recent Trend:**
-- Last 5 plans: 2 min
+- Last 5 plans: 27 min total
 - Trend: Baseline established
 
 *Updated after each plan completion*
@@ -64,6 +64,8 @@ Recent decisions affecting current work:
 - [Phase 01-movie-logging]: LogModal receives initialData for edit mode pre-population, keeping it stateless about global data
 - [Phase 01-movie-logging]: updateSeen uses immutable map+spread pattern consistent with existing watchlist handlers
 - [Phase 01-movie-logging]: Half-star visual uses two absolutely-positioned spans with overflow:hidden rather than SVG clip paths
+- [Phase 01-movie-logging]: useEffect syncs LogModal form state on initialData change — ensures edit mode pre-populates even when modal is re-opened without full unmount
+- [Phase 01-movie-logging]: clip-path: inset(0 50% 0 0) used for half-star clipping — eliminates glyph displacement from overflow:hidden on centered flex containers
 
 ### Pending Todos
 
@@ -75,6 +77,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-09T21:19:45.386Z
-Stopped at: Completed 01-movie-logging plan 01-01
+Last session: 2026-03-09T21:33:59.984Z
+Stopped at: Completed 01-movie-logging plan 01-02
 Resume file: None
