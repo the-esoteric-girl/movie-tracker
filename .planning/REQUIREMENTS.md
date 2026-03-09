@@ -71,8 +71,8 @@
 | SEEN-03 | Phase 2 | Pending |
 | YOU-01 | Phase 3 | Pending |
 | YOU-02 | Phase 3 | Pending |
-| DSGN-01 | Phase 4 | Pending |
-| DSGN-02 | Phase 4 | Pending |
+| DSGN-01 | Phase 3 | Pending |
+| DSGN-02 | Phase 3 | Pending |
 
 **Coverage:**
 - v1 requirements: 13 total
@@ -81,4 +81,4 @@
 
 ---
 *Requirements defined: 2026-03-09*
-*Last updated: 2026-03-09 after initial definition*
+*Last updated: 2026-03-09 after roadmap creation*
