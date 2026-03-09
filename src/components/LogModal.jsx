@@ -11,6 +11,13 @@ export default function LogModal({ movie, initialData, onSave, onClose }) {
   const [hoverRating, setHoverRating] = useState(null);
   const [showDateInput, setShowDateInput] = useState(false);
 
+  useEffect(() => {
+    setRating(initialData?.rating ?? 0);
+    setReview(initialData?.review ?? "");
+    setWatchedDate(initialData?.watchedDate ?? today);
+    setHoverRating(null);
+  }, [initialData, today]);
+
   const isDirty =
     rating !== (initialData?.rating ?? 0) ||
     review !== (initialData?.review ?? "") ||

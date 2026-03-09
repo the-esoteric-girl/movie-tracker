@@ -48,6 +48,9 @@ export default function MovieDetailPage({
     ? watchlist.some((m) => m.id === movie.id)
     : false;
   const isInSeen = movie ? seenList.some((m) => m.id === movie.id) : false;
+  const seenEntry = isInSeen
+    ? seenList.find((m) => m.id === movie.id) ?? null
+    : null;
 
   const toggleWatchlist = () => {
     if (!movie) return;
@@ -171,6 +174,11 @@ export default function MovieDetailPage({
                 {isInSeen ? "✓ LOGGED" : "LOG IT"}
               </button>
             </div>
+            {seenEntry?.rating > 0 && (
+              <div className={styles.userRating}>
+                ★ Your rating: {seenEntry.rating.toFixed(1)} / 5
+              </div>
+            )}
           </div>
         </div>
 

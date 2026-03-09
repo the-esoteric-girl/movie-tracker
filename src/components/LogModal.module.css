@@ -66,8 +66,7 @@
   line-height: 1;
 }
 
-.starBack,
-.starFront {
+.starBack {
   position: absolute;
   inset: 0;
   display: flex;
@@ -76,8 +75,12 @@
 }
 
 .starFront {
-  overflow: hidden;
-  width: 50%;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: inset(0 50% 0 0);
 }
 
 .ratingDisplay {
@@ -172,7 +175,7 @@
   background: var(--accent-lavender);
   color: var(--bg-primary);
   border: none;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: var(--text-sm);
   text-transform: uppercase;
   font-weight: var(--weight-bold);
