@@ -41,6 +41,7 @@ export default function App() {
     saveToStorage("watchlist", updated);
   }
 
+  // Expected shape: { ...tmdbMovieFields, rating: Number, review: String, watchedDate: "YYYY-MM-DD" }
   function addToSeen(movie) {
     const updated = [...seenList, movie];
     setSeenList(updated);
@@ -49,6 +50,14 @@ export default function App() {
 
   function removeFromSeen(movieId) {
     const updated = seenList.filter((m) => m.id !== movieId);
+    setSeenList(updated);
+    saveToStorage("seenList", updated);
+  }
+
+  function updateSeen(movieId, fields) {
+    const updated = seenList.map((m) =>
+      m.id === movieId ? { ...m, ...fields } : m,
+    );
     setSeenList(updated);
     saveToStorage("seenList", updated);
   }
@@ -83,6 +92,7 @@ export default function App() {
               onRemove={removeFromWatchlist}
               onAddSeen={addToSeen}
               onRemoveSeen={removeFromSeen}
+              onUpdateSeen={updateSeen}
             />
           }
         />
