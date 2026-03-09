@@ -65,7 +65,7 @@
 | LOG-03 | Phase 1 | Pending |
 | LOG-04 | Phase 1 | Pending |
 | LOG-05 | Phase 1 | Pending |
-| LOG-06 | Phase 1 | Pending |
+| LOG-06 | Phase 2 | Pending |
 | SEEN-01 | Phase 2 | Pending |
 | SEEN-02 | Phase 2 | Pending |
 | SEEN-03 | Phase 2 | Pending |
