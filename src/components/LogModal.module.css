@@ -1,0 +1,183 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background: var(--bg-surface);
+  border: 2px solid var(--accent-lavender);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-6);
+  width: min(480px, 90vw);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.modalTitle {
+  font-family: var(--font-display);
+  color: var(--accent-pink);
+  text-transform: uppercase;
+  font-size: var(--text-xl);
+  font-weight: var(--weight-black);
+}
+
+.movieRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.movieThumb {
+  width: 48px;
+  height: auto;
+  display: block;
+}
+
+.movieTitle {
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  font-size: var(--text-sm);
+}
+
+.movieYear {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+}
+
+.starsRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.starWrap {
+  position: relative;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  font-size: var(--text-2xl);
+  line-height: 1;
+}
+
+.starBack,
+.starFront {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.starFront {
+  overflow: hidden;
+  width: 50%;
+}
+
+.ratingDisplay {
+  color: var(--accent-lime);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-base);
+  margin-left: var(--space-2);
+}
+
+.starLeftHalf,
+.starRightHalf {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 1;
+}
+
+.starLeftHalf {
+  left: 0;
+}
+
+.starRightHalf {
+  right: 0;
+}
+
+.dateRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.dateLabel {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-weight: var(--weight-bold);
+  font-size: var(--text-sm);
+  white-space: nowrap;
+}
+
+.dateText {
+  cursor: pointer;
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+.dateInput {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--text-sm);
+}
+
+.reviewArea {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  padding: var(--space-3);
+  width: 100%;
+  resize: vertical;
+}
+
+.btnRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--space-2);
+}
+
+.cancelBtn {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  padding: var(--space-2) var(--space-3);
+}
+
+.cancelDirty {
+  color: var(--accent-pink);
+}
+
+.logBtn {
+  background: var(--accent-lavender);
+  color: var(--bg-primary);
+  border: none;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.05em;
+  padding: var(--space-3) var(--space-6);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
