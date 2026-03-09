@@ -71,6 +71,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Movie Logging | 0/2 | Not started | - |
+| 1. Movie Logging | 1/2 | In Progress|  |
 | 2. Seen Page | 0/2 | Not started | - |
 | 3. Profile, Stats, and Polish | 0/2 | Not started | - |

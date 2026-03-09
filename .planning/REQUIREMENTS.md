@@ -8,10 +8,10 @@
 ### Movie Logging
 
 - [ ] **LOG-01**: User can mark a movie as seen from the detail page
-- [ ] **LOG-02**: User can rate a movie ½–5★ (half-star increments) when logging it
-- [ ] **LOG-03**: User can write an optional text review when logging
-- [ ] **LOG-04**: User can set the date watched (defaults to today)
-- [ ] **LOG-05**: User can edit their rating/review for a movie already in seenList
+- [x] **LOG-02**: User can rate a movie ½–5★ (half-star increments) when logging it
+- [x] **LOG-03**: User can write an optional text review when logging
+- [x] **LOG-04**: User can set the date watched (defaults to today)
+- [x] **LOG-05**: User can edit their rating/review for a movie already in seenList
 - [ ] **LOG-06**: Modal can be triggered from multiple places (detail page, seen list)
 
 ### Seen Page
@@ -61,10 +61,10 @@
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | LOG-01 | Phase 1 | Pending |
-| LOG-02 | Phase 1 | Pending |
-| LOG-03 | Phase 1 | Pending |
-| LOG-04 | Phase 1 | Pending |
-| LOG-05 | Phase 1 | Pending |
+| LOG-02 | Phase 1 | Complete |
+| LOG-03 | Phase 1 | Complete |
+| LOG-04 | Phase 1 | Complete |
+| LOG-05 | Phase 1 | Complete |
 | LOG-06 | Phase 2 | Pending |
 | SEEN-01 | Phase 2 | Pending |
 | SEEN-02 | Phase 2 | Pending |
