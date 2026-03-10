@@ -79,7 +79,13 @@ export default function App() {
         />
         <Route
           path="/seen"
-          element={<SeenPage seenList={seenList} onRemove={removeFromSeen} />}
+          element={
+            <SeenPage
+              seenList={seenList}
+              onRemove={removeFromSeen}
+              onUpdateSeen={updateSeen}
+            />
+          }
         />
         <Route path="/you" element={<YouPage />} />
         <Route
