@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./SeenPage.module.css";
+import LogModal from "../components/LogModal";
 
 function formatDate(dateStr) {
   if (!dateStr) return "";
@@ -11,6 +12,13 @@ function formatDate(dateStr) {
 
 export default function SeenPage({ seenList, onRemove, onUpdateSeen }) {
   const [view, setView] = useState("grid");
+  const [showLogModal, setShowLogModal] = useState(false);
+  const [selectedEntry, setSelectedEntry] = useState(null);
+
+  function openModal(entry) {
+    setSelectedEntry(entry);
+    setShowLogModal(true);
+  }
 
   if (seenList.length === 0) {
     return (
@@ -44,7 +52,7 @@ export default function SeenPage({ seenList, onRemove, onUpdateSeen }) {
       {view === "grid" ? (
         <div className="movie-grid">
           {seenList.map((entry) => (
-            <div key={entry.id} className={styles.gridCard} onClick={() => {}}>
+            <div key={entry.id} className={styles.gridCard} onClick={() => openModal(entry)}>
               {entry.poster_path
                 ? <img src={`https://image.tmdb.org/t/p/w500${entry.poster_path}`} alt={entry.title} className={styles.gridPoster} />
                 : <div className={styles.gridPosterFallback} />}
@@ -60,7 +68,7 @@ export default function SeenPage({ seenList, onRemove, onUpdateSeen }) {
       ) : (
         <div className={styles.listWrap}>
           {seenList.map((entry) => (
-            <div key={entry.id} className={styles.listRow} onClick={() => {}}>
+            <div key={entry.id} className={styles.listRow} onClick={() => openModal(entry)}>
               {entry.poster_path
                 ? <img src={`https://image.tmdb.org/t/p/w185${entry.poster_path}`} alt={entry.title} className={styles.listThumb} />
                 : <div className={styles.listThumbFallback} />}
@@ -79,6 +87,26 @@ export default function SeenPage({ seenList, onRemove, onUpdateSeen }) {
             </div>
           ))}
         </div>
+      )}
+
+      {showLogModal && selectedEntry && (
+        <LogModal
+          movie={selectedEntry}
+          initialData={{
+            rating: selectedEntry.rating,
+            review: selectedEntry.review,
+            watchedDate: selectedEntry.watchedDate,
+          }}
+          onSave={(data) => {
+            onUpdateSeen(selectedEntry.id, data);
+            setShowLogModal(false);
+            setSelectedEntry(null);
+          }}
+          onClose={() => {
+            setShowLogModal(false);
+            setSelectedEntry(null);
+          }}
+        />
       )}
     </div>
   );
