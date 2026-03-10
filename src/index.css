@@ -77,6 +77,12 @@
   /* --breakpoint-lg: 1280px */
 }
 
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--border-subtle); }
+::-webkit-scrollbar-thumb:hover { background: #555567; }
+
 /* ── Reset ── */
 * {
   margin: var(--space-0);
