@@ -1,14 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./SeenPage.module.css";
-import LogModal from "../components/LogModal";
-
-function formatDate(dateStr) {
-  if (!dateStr) return "";
-  return new Date(dateStr + "T00:00:00").toLocaleDateString("en-US", {
-    month: "short", day: "numeric", year: "numeric"
-  });
-}
 
 const GridIcon = () => (
   <svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor" aria-hidden="true">
@@ -27,6 +19,13 @@ const ListIcon = () => (
   </svg>
 );
 
+function formatDate(dateStr) {
+  if (!dateStr) return "";
+  return new Date(dateStr + "T00:00:00").toLocaleDateString("en-US", {
+    month: "short", day: "numeric", year: "numeric"
+  });
+}
+
 function getRating(entry) {
   if (entry.rating > 0) {
     return { value: entry.rating.toFixed(1), isUser: true };
@@ -39,13 +38,6 @@ function getRating(entry) {
 
 export default function SeenPage({ seenList, onRemove, onUpdateSeen }) {
   const [view, setView] = useState("grid");
-  const [showLogModal, setShowLogModal] = useState(false);
-  const [selectedEntry, setSelectedEntry] = useState(null);
-
-  function openModal(entry) {
-    setSelectedEntry(entry);
-    setShowLogModal(true);
-  }
 
   if (seenList.length === 0) {
     return (
@@ -88,20 +80,22 @@ export default function SeenPage({ seenList, onRemove, onUpdateSeen }) {
             const { value: ratingVal, isUser } = getRating(entry);
             const year = entry.release_date ? entry.release_date.slice(0, 4) : "N/A";
             return (
-              <div key={entry.id} className={styles.gridCard} onClick={() => openModal(entry)}>
-                {entry.poster_path
-                  ? <img src={`https://image.tmdb.org/t/p/w500${entry.poster_path}`} alt={entry.title} className={styles.gridPoster} />
-                  : <div className={styles.gridPosterFallback} />}
-                <div className={styles.gridInfo}>
-                  <p className={styles.gridTitle}>{entry.title}</p>
-                  <div className={styles.gridMeta}>
-                    <span className={styles.gridYear}>{year}</span>
-                    <span className={isUser ? styles.gridRatingUser : styles.gridRatingCommunity}>
-                      {ratingVal ? `★ ${ratingVal}` : "—"}
-                    </span>
+              <Link key={entry.id} to={`/movie/${entry.id}`} className={styles.gridCardLink}>
+                <div className={styles.gridCard}>
+                  {entry.poster_path
+                    ? <img src={`https://image.tmdb.org/t/p/w500${entry.poster_path}`} alt={entry.title} className={styles.gridPoster} />
+                    : <div className={styles.gridPosterFallback} />}
+                  <div className={styles.gridInfo}>
+                    <p className={styles.gridTitle}>{entry.title}</p>
+                    <div className={styles.gridMeta}>
+                      <span className={styles.gridYear}>{year}</span>
+                      <span className={isUser ? styles.gridRatingUser : styles.gridRatingCommunity}>
+                        {ratingVal ? `★ ${ratingVal}` : "—"}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
@@ -110,44 +104,26 @@ export default function SeenPage({ seenList, onRemove, onUpdateSeen }) {
           {seenList.map((entry) => {
             const { value: ratingVal, isUser } = getRating(entry);
             return (
-              <div key={entry.id} className={styles.listRow} onClick={() => openModal(entry)}>
-                {entry.poster_path
-                  ? <img src={`https://image.tmdb.org/t/p/w185${entry.poster_path}`} alt={entry.title} className={styles.listThumb} />
-                  : <div className={styles.listThumbFallback} />}
-                <div className={styles.listBody}>
-                  <p className={styles.listTitle}>{entry.title}</p>
-                  <span className={isUser ? styles.listRatingUser : styles.listRatingCommunity}>
-                    {ratingVal ? `★ ${ratingVal}` : "—"}
-                  </span>
-                  {entry.review && (
-                    <p className={styles.listReview}>{entry.review}</p>
-                  )}
-                  <p className={styles.listDate}>{formatDate(entry.watchedDate)}</p>
+              <Link key={entry.id} to={`/movie/${entry.id}`} className={styles.listRowLink}>
+                <div className={styles.listRow}>
+                  {entry.poster_path
+                    ? <img src={`https://image.tmdb.org/t/p/w185${entry.poster_path}`} alt={entry.title} className={styles.listThumb} />
+                    : <div className={styles.listThumbFallback} />}
+                  <div className={styles.listBody}>
+                    <p className={styles.listTitle}>{entry.title}</p>
+                    <span className={isUser ? styles.listRatingUser : styles.listRatingCommunity}>
+                      {ratingVal ? `★ ${ratingVal}` : "—"}
+                    </span>
+                    {entry.review && (
+                      <p className={styles.listReview}>{entry.review}</p>
+                    )}
+                    <p className={styles.listDate}>{formatDate(entry.watchedDate)}</p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
-      )}
-
-      {showLogModal && selectedEntry && (
-        <LogModal
-          movie={selectedEntry}
-          initialData={{
-            rating: selectedEntry.rating,
-            review: selectedEntry.review,
-            watchedDate: selectedEntry.watchedDate,
-          }}
-          onSave={(data) => {
-            onUpdateSeen(selectedEntry.id, data);
-            setShowLogModal(false);
-            setSelectedEntry(null);
-          }}
-          onClose={() => {
-            setShowLogModal(false);
-            setSelectedEntry(null);
-          }}
-        />
       )}
     </div>
   );

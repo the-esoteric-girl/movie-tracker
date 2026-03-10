@@ -24,6 +24,10 @@
 .emptyHint { font-family: var(--font-body); font-size: 0.9rem; color: var(--text-muted); }
 .emptyLink { font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; color: var(--accent-pink); text-decoration: none; border-bottom: 2px solid var(--accent-pink); padding-bottom: 2px; }
 
+/* Link resets */
+.gridCardLink { display: block; text-decoration: none; color: inherit; }
+.listRowLink { display: block; text-decoration: none; color: inherit; }
+
 /* Grid card — matches MovieCard style */
 .gridCard {
   cursor: pointer;
