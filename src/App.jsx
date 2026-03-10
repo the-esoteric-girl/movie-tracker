@@ -43,9 +43,13 @@ export default function App() {
 
   // Expected shape: { ...tmdbMovieFields, rating: Number, review: String, watchedDate: "YYYY-MM-DD" }
   function addToSeen(movie) {
-    const updated = [...seenList, movie];
-    setSeenList(updated);
-    saveToStorage("seenList", updated);
+    const updatedSeen = [...seenList, movie];
+    setSeenList(updatedSeen);
+    saveToStorage("seenList", updatedSeen);
+    // Auto-remove from watchlist when logged
+    const updatedWatchlist = watchlist.filter((m) => m.id !== movie.id);
+    setWatchlist(updatedWatchlist);
+    saveToStorage("watchlist", updatedWatchlist);
   }
 
   function removeFromSeen(movieId) {

@@ -21,7 +21,7 @@ const tabs = [
   },
   {
     to: "/saved",
-    label: "Saved",
+    label: "Watchlist",
     icon: (
       <svg
         viewBox="0 0 24 24"
