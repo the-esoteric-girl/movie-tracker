@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 02-01-PLAN.md
-last_updated: "2026-03-10T07:57:17Z"
-last_activity: 2026-03-10 — Completed 02-01 SeenPage grid/list views
+stopped_at: Checkpoint 02-02 — awaiting human-verify
+last_updated: "2026-03-10T08:01:13Z"
+last_activity: 2026-03-10 — Completed 02-02 tasks 1-2, at checkpoint
 progress:
   total_phases: 3
   completed_phases: 1
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-03-09)
 ## Current Position
 
 Phase: 2 of 3 (Seen Page)
-Plan: 1 of 2 in current phase — Plan 1 Complete
+Plan: 2 of 2 in current phase — Plan 2 at checkpoint (human-verify)
 Status: In progress
-Last activity: 2026-03-10 — Completed 02-01 SeenPage grid/list views
+Last activity: 2026-03-10 — Completed 02-02 tasks 1-2, awaiting human-verify checkpoint
 
 Progress: [███████░░░] 75%
 
@@ -44,7 +44,7 @@ Progress: [███████░░░] 75%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-movie-logging | 2 | 27 min | 14 min |
-| 02-seen-page | 1 | 1 min | 1 min |
+| 02-seen-page | 2 | 3 min | 1.5 min |
 
 **Recent Trend:**
 - Last 5 plans: 28 min total
@@ -70,6 +70,7 @@ Recent decisions affecting current work:
 - [Phase 02-seen-page]: SeenPage builds inline card markup rather than reusing MovieCard — SeenPage cards open a modal, MovieCard navigates via Link
 - [Phase 02-seen-page]: onUpdateSeen destructured as optional prop now so plan 02 wire-up requires no signature changes
 - [Phase 02-seen-page]: formatDate appends T00:00:00 to YYYY-MM-DD to prevent timezone shift when constructing Date object
+- [Phase 02-seen-page]: selectedEntry stores full seenList object so it can be passed as movie prop to LogModal without transformation
 
 ### Pending Todos
 
@@ -81,6 +82,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-10T07:57:17Z
-Stopped at: Completed 02-01-PLAN.md
+Last session: 2026-03-10T08:01:13Z
+Stopped at: Checkpoint 02-02 — human-verify (dev server running at localhost:5173)
 Resume file: None
