@@ -3,15 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import styles from "./MovieDetailPage.module.css";
 import LogModal from "../components/LogModal";
 
-function renderUserStars(rating) {
-  return Array.from({ length: 5 }, (_, i) => {
-    const val = i + 1;
-    if (rating >= val) return <span key={i} className={styles.starFull}>★</span>;
-    if (rating >= val - 0.5) return <span key={i} className={styles.starHalf}>★</span>;
-    return <span key={i} className={styles.starEmpty}>★</span>;
-  });
-}
-
 export default function MovieDetailPage({
   watchlist,
   seenList,
@@ -28,6 +19,7 @@ export default function MovieDetailPage({
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showLogModal, setShowLogModal] = useState(false);
+  const [hoverRating, setHoverRating] = useState(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -58,7 +50,7 @@ export default function MovieDetailPage({
     : false;
   const isInSeen = movie ? seenList.some((m) => m.id === movie.id) : false;
   const seenEntry = isInSeen
-    ? seenList.find((m) => m.id === movie.id) ?? null
+    ? (seenList.find((m) => m.id === movie.id) ?? null)
     : null;
 
   const toggleWatchlist = () => {
@@ -70,6 +62,17 @@ export default function MovieDetailPage({
     if (!movie) return;
     setShowLogModal(true);
   };
+
+  function handleQuickRate(value) {
+    if (!movie) return;
+    const today = new Date().toISOString().split("T")[0];
+    if (isInSeen) {
+      onUpdateSeen(movie.id, { rating: value });
+    } else {
+      onAddSeen({ ...movie, rating: value, review: "", watchedDate: today });
+    }
+    setHoverRating(null);
+  }
 
   if (loading) {
     return (
@@ -102,6 +105,8 @@ export default function MovieDetailPage({
     ? `${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60}m`
     : null;
   const cast = movie.credits?.cast?.slice(0, 14) || [];
+
+  const displayRating = hoverRating ?? (seenEntry?.rating ?? 0);
 
   return (
     <div className={styles.page}>
@@ -153,7 +158,7 @@ export default function MovieDetailPage({
                 <>
                   <span className={styles.metaDot}>·</span>
                   <span className={styles.metaRating}>
-                    ★ {movie.vote_average.toFixed(1)}
+                    ★ {(movie.vote_average / 2).toFixed(1)}
                   </span>
                 </>
               )}
@@ -183,14 +188,35 @@ export default function MovieDetailPage({
                 {isInSeen ? "✓ LOGGED" : "LOG IT"}
               </button>
             </div>
-            {seenEntry?.rating > 0 && (
-              <div className={styles.userRating}>
-                <span className={styles.userRatingStars}>
-                  {renderUserStars(seenEntry.rating)}
-                </span>
-                <span className={styles.userRatingNum}>{seenEntry.rating.toFixed(1)}</span>
+
+            {/* Inline quick star rating */}
+            <div className={styles.quickRating} onMouseLeave={() => setHoverRating(null)}>
+              <span className={styles.quickRatingLabel}>YOUR RATING</span>
+              <div className={styles.quickStars}>
+                {[1, 2, 3, 4, 5].map((i) => {
+                  const filled = displayRating >= i;
+                  const half = !filled && displayRating >= i - 0.5;
+                  return (
+                    <span key={i} className={styles.quickStarWrap}>
+                      <span className={`${styles.quickStar} ${filled ? styles.quickStarFull : half ? styles.quickStarHalf : styles.quickStarEmpty}`}>★</span>
+                      <span
+                        className={styles.quickStarLeft}
+                        onMouseEnter={() => setHoverRating(i - 0.5)}
+                        onClick={() => handleQuickRate(i - 0.5)}
+                      />
+                      <span
+                        className={styles.quickStarRight}
+                        onMouseEnter={() => setHoverRating(i)}
+                        onClick={() => handleQuickRate(i)}
+                      />
+                    </span>
+                  );
+                })}
+                {displayRating > 0 && (
+                  <span className={styles.quickRatingNum}>{displayRating.toFixed(1)}</span>
+                )}
               </div>
-            )}
+            </div>
           </div>
         </div>
 
@@ -233,7 +259,9 @@ export default function MovieDetailPage({
       {showLogModal && movie && (
         <LogModal
           movie={movie}
-          initialData={isInSeen ? (seenList.find((m) => m.id === movie.id) ?? null) : null}
+          initialData={
+            isInSeen ? (seenList.find((m) => m.id === movie.id) ?? null) : null
+          }
           onSave={(data) => {
             if (isInSeen) {
               onUpdateSeen(movie.id, data);
