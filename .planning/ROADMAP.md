@@ -43,11 +43,11 @@ Plans:
   2. User can toggle to a list view that shows each movie's star rating and review snippet
   3. User can tap a movie in the seen list to open the log modal and edit it
   4. Log modal is triggerable from both MovieDetailPage and SeenPage (completes LOG-06)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 02-01: Build SeenPage with grid view and list view toggle
-- [ ] 02-02: Wire LogModal trigger from SeenPage entries (completes LOG-06)
+- [ ] 02-01-PLAN.md — Build SeenPage grid view, list view, toggle, and inviting empty state
+- [ ] 02-02-PLAN.md — Wire LogModal into SeenPage entries and pass onUpdateSeen from App.jsx (completes LOG-06)
 
 ### Phase 3: Profile, Stats, and Polish
 **Goal**: Users have a personal profile page with stats and the whole app looks intentional and visually consistent
