@@ -58,11 +58,12 @@ Plans:
   2. User can set a display name and avatar on the You page
   3. Colors, typography, and spacing match the Figma design system across all pages
   4. Hover, active, empty, and loading states are consistent across all components
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 03-01: Build YouPage with stats and basic profile (display name, avatar)
-- [ ] 03-02: Visual overhaul — update color palette, component states, and design tokens to match Figma
+- [ ] 03-01-PLAN.md — Build YouPage with stats row and profile (display name, emoji avatar)
+- [ ] 03-02-PLAN.md — Design token overhaul: add --accent-muted blue-gray, change default shadow color
+- [ ] 03-03-PLAN.md — Component states: FindPage skeleton loader and full visual sign-off checkpoint
 
 ## Progress
 
@@ -73,4 +74,4 @@ Phases execute in numeric order: 1 → 2 → 3
 |-------|----------------|--------|-----------|
 | 1. Movie Logging | 2/2 | Complete   | 2026-03-09 |
 | 2. Seen Page | 0/2 | Not started | - |
-| 3. Profile, Stats, and Polish | 0/2 | Not started | - |
+| 3. Profile, Stats, and Polish | 0/3 | Not started | - |
