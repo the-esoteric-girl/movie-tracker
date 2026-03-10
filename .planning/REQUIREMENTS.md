@@ -16,8 +16,8 @@
 
 ### Seen Page
 
-- [ ] **SEEN-01**: User can view all logged movies in a grid view
-- [ ] **SEEN-02**: User can toggle to a list view that shows rating and review snippet
+- [x] **SEEN-01**: User can view all logged movies in a grid view
+- [x] **SEEN-02**: User can toggle to a list view that shows rating and review snippet
 - [ ] **SEEN-03**: User can open a movie's review modal from the seen list
 
 ### You Page
@@ -66,8 +66,8 @@
 | LOG-04 | Phase 1 | Complete |
 | LOG-05 | Phase 1 | Complete |
 | LOG-06 | Phase 2 | Pending |
-| SEEN-01 | Phase 2 | Pending |
-| SEEN-02 | Phase 2 | Pending |
+| SEEN-01 | Phase 2 | Complete |
+| SEEN-02 | Phase 2 | Complete |
 | SEEN-03 | Phase 2 | Pending |
 | YOU-01 | Phase 3 | Pending |
 | YOU-02 | Phase 3 | Pending |
